@@ -67,9 +67,18 @@ group enumerating targets x appearance.
 - Scope: arrow all 18 sample units.
 - Architecture: orthogonal Targets x Appearance.
 
-## Blockers
+## Status
 
-1. Confirm loose `.patch` overrides still apply on the current `DSAR`/`.nxa`
-   compressed-bundle game build.
-2. An extractor/SDK matching the current build is needed to extract each sample
-   unit and graft the arrow onto it.
+1. Loose `.patch` overrides still apply on the current `DSAR`/`.nxa` build —
+   confirmed (the blue Super Credit arrows render in-game).
+2. Extractor/SDK for the current build — done. The Blender HD2 SDK reads the
+   live game data and all sample units resolve as importable `unit` entries.
+
+## Remaining
+
+3. Graft the arrow onto each sample unit (mesh + a purple material) and export
+   the patches — interactive Blender work.
+4. Confirm in-game that the purple arrows render over samples.
+
+When done, drop the exported patches into `purple/glow` and `purple/no_glow`,
+replacing the placeholders, and re-cut the release.

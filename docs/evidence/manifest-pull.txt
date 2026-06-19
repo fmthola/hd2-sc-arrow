@@ -2,11 +2,13 @@ Manifest + packaging validation (HD2ModManager ingest requirements)
 ==================================================================
 manifest.json present at root : yes
 manifest Version              : 1  (V1)
-manifest Name                 : 'Super Credit Arrows'
-option groups                 : 1
-  - group 'Arrow Colour and Glow': 4 sub-option(s)
-patch files                   : 12
-all match manager patch regex : True
+manifest Name                 : 'Super Credit & Sample Arrows'
+option group 'Arrow': 4 sub-option(s)
+   - Blue - Super Credits (glowing)  -> ['blue/glow']
+   - Blue - Super Credits (no glow)  -> ['blue/no_glow']
+   - Purple - Samples (glowing) [preview]  -> ['purple/glow']
+   - Purple - Samples (no glow) [preview]  -> ['purple/no_glow']
+patch files                   : 6 | all match manager regex: True
 
-Result: manifest deserializes as a V1 manifest and every patch file
-matches the manager's deploy pattern. The mod manager can ingest it.
+Result: V1 manifest, manager-ingestible. Blue=Super Credits patches are
+functional; Purple=Samples options are preview placeholders (no patches).

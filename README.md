@@ -2,12 +2,15 @@
 
 ![Thumbnail](thumbnail.png)
 
-Helldivers 2 mod that puts arrows above Super Credit piles.
+Helldivers 2 mod that puts arrows above Super Credit piles, with a target menu:
+**blue arrows = Super Credits, purple arrows = Samples**.
 
 Fork of [Giovani1906/hd2-sc-arrow](https://github.com/Giovani1906/hd2-sc-arrow).
-This fork brings the mod to a local DevSecOps baseline: a SonarQube scan and
-quality gate, committed evidence, install/revert scripts, and a roadmap to also
-arrow Samples. The mod's binary patches are unchanged from upstream.
+This fork adds a local DevSecOps baseline (SonarQube scan, evidence,
+install/revert scripts) and a blue/purple target menu. The blue Super Credit
+arrows are the upstream patches, unchanged. The purple Sample arrows are a
+preview: the menu is wired but the sample patches are not built yet (see
+[`docs/ROADMAP.md`](docs/ROADMAP.md)).
 
 ## Code status
 
@@ -38,9 +41,10 @@ and the [`sonar-issues.png`](docs/evidence/sonar-issues.png) /
 
 | Area | State |
 |---|---|
-| Super Credit arrows | works (upstream feature) |
-| Appearance options | blue/purple x glow/no-glow |
-| Sample arrows | planned (see [`docs/ROADMAP.md`](docs/ROADMAP.md)) |
+| Blue = Super Credit arrows | works (upstream patches); glow / no-glow |
+| Purple = Sample arrows | menu present; **preview** — no arrow renders yet |
+| Target menu (blue/purple) | works in HD2ModManager EDIT |
+| Sample patches | not built; toolchain set up (see [`docs/ROADMAP.md`](docs/ROADMAP.md)) |
 | SonarQube gate | passing |
 
 ## How it works
@@ -59,7 +63,7 @@ Use [HD2ModManager](https://www.nexusmods.com/helldivers2/mods/109?tab=files):
 Manual / scripted:
 
 ```bash
-scripts/install.sh purple/glow /path/to/Helldivers\ 2   # or set HD2_GAME_PATH
+scripts/install.sh blue/glow /path/to/Helldivers\ 2   # blue = Super Credits; or set HD2_GAME_PATH
 ```
 
 ### Revert
@@ -89,6 +93,8 @@ Back up the data dir first: `cp -a "$GAME/data" "$GAME/data.bak"`.
 
 ### Report log
 
+- 2026-06-19 — v2: added the blue/purple target menu (blue = Super Credits,
+  functional; purple = Samples, preview). Packaging re-validated; SonarQube gate OK.
 - 2026-06-19 — Baseline applied to the fork. SonarQube scan: gate OK, 0 bugs /
   0 vulnerabilities / 0 hotspots / 0 code smells, ratings A/A/A. Packaging
   validated against the mod manager's model. Evidence in `docs/evidence/`.
