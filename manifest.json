@@ -2,7 +2,7 @@
     "Version": 1,
     "Guid": "88d1225a-b661-406e-81ee-d6b200704b40",
     "Name": "Super Credit & Sample Arrows",
-    "Description": "Blue arrows mark Super Credits. Purple arrows mark Samples (preview).",
+    "Description": "Blue arrows mark Super Credits. Purple arrows mark Samples (all 18 sample types).",
     "IconPath": "thumbnail.png",
     "Options": [
         {
@@ -24,15 +24,15 @@
                     ]
                 },
                 {
-                    "Name": "Purple - Samples (glowing) [preview]",
-                    "Description": "Purple arrows over Samples, glowing. Not functional yet.",
+                    "Name": "Purple - Samples (glowing)",
+                    "Description": "Arrows over all Samples (common/rare/super), glowing.",
                     "Include": [
                         "purple/glow"
                     ]
                 },
                 {
-                    "Name": "Purple - Samples (no glow) [preview]",
-                    "Description": "Purple arrows over Samples, not glowing. Not functional yet.",
+                    "Name": "Purple - Samples (no glow)",
+                    "Description": "Arrows over all Samples (common/rare/super), not glowing.",
                     "Include": [
                         "purple/no_glow"
                     ]

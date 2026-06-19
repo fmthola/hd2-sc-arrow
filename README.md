@@ -8,9 +8,11 @@ Helldivers 2 mod that puts arrows above Super Credit piles, with a target menu:
 Fork of [Giovani1906/hd2-sc-arrow](https://github.com/Giovani1906/hd2-sc-arrow).
 This fork adds a local DevSecOps baseline (SonarQube scan, evidence,
 install/revert scripts) and a blue/purple target menu. The blue Super Credit
-arrows are the upstream patches, unchanged. The purple Sample arrows are a
-preview: the menu is wired but the sample patches are not built yet (see
-[`docs/ROADMAP.md`](docs/ROADMAP.md)).
+arrows are the upstream patches, unchanged. The purple Sample arrows are now
+functional: the arrow is grafted onto all 18 sample units (built with the
+Blender HD2 SDK). The arrow uses each sample's own material, so it glows in the
+sample's colour. Validated structurally (patch round-trips, manager-ingestible);
+confirm the render in-game. See [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Code status
 
@@ -42,9 +44,9 @@ and the [`sonar-issues.png`](docs/evidence/sonar-issues.png) /
 | Area | State |
 |---|---|
 | Blue = Super Credit arrows | works (upstream patches); glow / no-glow |
-| Purple = Sample arrows | menu present; **preview** — no arrow renders yet |
+| Purple = Sample arrows | arrow grafted onto all 18 sample units; structurally validated |
 | Target menu (blue/purple) | works in HD2ModManager EDIT |
-| Sample patches | not built; toolchain set up (see [`docs/ROADMAP.md`](docs/ROADMAP.md)) |
+| Sample patches | built via Blender HD2 SDK; in-game render to be confirmed |
 | SonarQube gate | passing |
 
 ## How it works
@@ -88,10 +90,16 @@ Back up the data dir first: `cp -a "$GAME/data" "$GAME/data.bak"`.
 - [x] `manifest.json` deserializes as a Version 1 manifest
 - [x] all patch files match the manager's deploy pattern
 - [x] SonarQube scan runs and the quality gate passes
+- [x] Sample arrows built and grafted onto all 18 sample units (structurally validated)
 - [ ] in-game arrow render confirmed on the current build (manual)
-- [ ] Sample arrows implemented (roadmap)
 
 ### Report log
+
+- 2026-06-19 — v2.1: built the Sample arrow patches. The arrow cone from the
+  Super Credit unit is grafted onto all 18 sample units (static + skinned) via
+  the Blender HD2 SDK, in one `9ba626afa44a3aa3` patch. Validated structurally
+  (re-reads with the arrow on every unit; manager-ingestible). In-game render
+  not yet confirmed. Arrow colour follows each sample's material.
 
 - 2026-06-19 — v2: added the blue/purple target menu (blue = Super Credits,
   functional; purple = Samples, preview). Packaging re-validated; SonarQube gate OK.

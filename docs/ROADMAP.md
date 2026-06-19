@@ -74,11 +74,17 @@ group enumerating targets x appearance.
 2. Extractor/SDK for the current build — done. The Blender HD2 SDK reads the
    live game data and all sample units resolve as importable `unit` entries.
 
+## Done
+
+3. Arrow grafted onto all 18 sample units at the RawMesh level (extract the
+   arrow cone from the credit unit, append to each sample mesh + LOD, bind to
+   the rig, re-serialize). One `9ba626afa44a3aa3` patch. Structurally validated.
+
 ## Remaining
 
-3. Graft the arrow onto each sample unit (mesh + a purple material) and export
-   the patches — interactive Blender work.
-4. Confirm in-game that the purple arrows render over samples.
+4. Confirm in-game that the arrows render over samples.
+5. Optional: bundle the credit arrow material for a uniform purple colour and
+   real glow/no-glow variants (currently the arrow uses the sample's material).
 
 When done, drop the exported patches into `purple/glow` and `purple/no_glow`,
 replacing the placeholders, and re-cut the release.

@@ -1,4 +1,0 @@
-Purple = Samples (glow). Preview: no patch files yet, so selecting a Purple
-option deploys no arrow. Producing real sample arrows requires grafting the
-arrow onto each sample unit in Blender (toolchain is set up) and confirming it
-in-game. See docs/ROADMAP.md.
