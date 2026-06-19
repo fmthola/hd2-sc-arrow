@@ -1,0 +1,12 @@
+Manifest + packaging validation (HD2ModManager ingest requirements)
+==================================================================
+manifest.json present at root : yes
+manifest Version              : 1  (V1)
+manifest Name                 : 'Super Credit Arrows'
+option groups                 : 1
+  - group 'Arrow Colour and Glow': 4 sub-option(s)
+patch files                   : 12
+all match manager patch regex : True
+
+Result: manifest deserializes as a V1 manifest and every patch file
+matches the manager's deploy pattern. The mod manager can ingest it.

@@ -1,0 +1,47 @@
+>> running scripts/sonar.sh (pulls scanner image first time, scans, waits for gate)
+20:41:57.689 INFO  Hit the cache for 0 out of 1
+20:41:57.689 INFO  Miss the cache for 1 out of 1: ANALYSIS_MODE_INELIGIBLE [1/1]
+20:41:57.689 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=6204ms
+20:41:57.689 INFO  Sensor TextAndSecretsSensor [text]
+20:41:57.697 INFO  Available processors: 16
+20:41:57.698 INFO  Using 16 threads for analysis.
+20:41:57.881 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+20:41:57.901 INFO  Start fetching files for the text and secrets analysis
+20:41:57.905 INFO  Using Git CLI to retrieve dirty files
+20:41:57.907 WARN  Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+20:41:57.907 INFO  Starting the text and secrets analysis
+20:41:57.909 INFO  1 source file to be analyzed for the text and secrets analysis
+20:41:57.932 INFO  1/1 source file has been analyzed for the text and secrets analysis
+20:41:57.933 INFO  Sensor TextAndSecretsSensor [text] (done) | time=243ms
+20:41:57.936 INFO  ------------- Run sensors on project
+20:41:58.035 INFO  Sensor Zero Coverage Sensor
+20:41:58.035 INFO  Sensor Zero Coverage Sensor (done) | time=0ms
+20:41:58.035 INFO  ------------- Gather SCA dependencies on project
+20:41:58.038 INFO  Dependency analysis skipped
+20:41:58.040 INFO  SCM Publisher SCM provider for this project is: git
+20:41:58.041 INFO  SCM Publisher 1 source file to be analyzed
+20:41:58.124 INFO  SCM Publisher 0/1 source files have been analyzed (done) | time=83ms
+20:41:58.125 WARN  Missing blame information for the following files:
+20:41:58.125 WARN    * scripts/capture-sonar-evidence.mjs
+20:41:58.125 WARN  This may lead to missing/broken features in SonarQube
+20:41:58.127 INFO  CPD Executor Calculating CPD for 1 file
+20:41:58.130 INFO  CPD Executor CPD calculation finished (done) | time=3ms
+20:41:58.135 INFO  SCM revision ID '511b875f9857d267fa886054bf704d46adaaac51'
+20:41:58.222 INFO  Analysis report generated in 89ms, dir size=280.3 kB
+20:41:58.232 INFO  Analysis report compressed in 10ms, zip size=35.8 kB
+20:41:58.397 INFO  Analysis report uploaded in 165ms
+20:41:58.398 INFO  ANALYSIS SUCCESSFUL, you can find the results at: <sonar-host>/dashboard?id=hd2-sc-arrow
+20:41:58.398 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+20:41:58.399 INFO  More about the report processing at <sonar-host>/api/ce/task?id=d1229e07-5cd1-4279-b0c2-39d4093e5f56
+20:41:58.484 INFO  Analysis total time: 1:08.628 s
+20:41:58.484 INFO  SonarScanner Engine completed successfully
+20:41:58.520 INFO  EXECUTION SUCCESS
+20:41:58.521 INFO  Total time: 5:12.295s
+>> waiting for quality gate
+>> quality gate: OK
+=== sonar.sh exit: 0 ===

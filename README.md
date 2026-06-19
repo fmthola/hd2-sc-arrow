@@ -1,32 +1,119 @@
-# hd2-sc-arrow
+# Super Credit Arrows (hd2-sc-arrow)
 
 ![Thumbnail](thumbnail.png)
 
 Helldivers 2 mod that puts arrows above Super Credit piles.
 
-<a href="https://github.com/Giovani1906/hd2-sc-arrow/releases/latest"><img src="https://img.shields.io/badge/Download-Latest-purple?style=for-the-badge&logo=github&logoSize=auto" alt="Latest release"></a>
+Fork of [Giovani1906/hd2-sc-arrow](https://github.com/Giovani1906/hd2-sc-arrow).
+This fork brings the mod to a local DevSecOps baseline: a SonarQube scan and
+quality gate, committed evidence, install/revert scripts, and a roadmap to also
+arrow Samples. The mod's binary patches are unchanged from upstream.
 
-## FAQ
-### How do I install the mod?
-#### Using HD2ModManager
-1. Download the latest `HD2ModManager` from [here](https://www.nexusmods.com/helldivers2/mods/109?tab=files).
-2. Download the latest mod from the icon above.
-3. Unpack the mod manager in whatever location you like and launch it.
-4. Press the `Add` button, select downloaded mod, and you should have it pop up in the mod list with the name "Super Credit Arrows" and the thumbnail image being the one shown above.
-5. Click on the box left to the trash can and make sure it's checked.  
-   If you'd like, you can change the appearance of the arrow by clicking the `EDIT` button above the checkbox.
-6. Press `Deploy`.
+## Code status
 
-Now the mod should work the next time you launch the game.
+Last scan: 2026-06-19. Self-hosted SonarQube Community (server from the local
+credential store). Numbers from [`docs/evidence/sonar-report.txt`](docs/evidence/sonar-report.txt).
 
-#### Doing it manually
-1. Download the latest mod from the icon above.
-2. Open the archive.
-3. Pick whatever appearance you'd like from the folders inside the archive.  
-   For example, I'm going to use `purple/glow`.
-4. Drag the patch files to the `data` folder where the game is installed.
+| Metric | Value |
+|---|---|
+| Quality gate | OK |
+| Bugs | 0 |
+| Vulnerabilities | 0 |
+| Security hotspots | 0 |
+| Code smells | 0 |
+| Security rating | A |
+| Reliability rating | A |
+| Maintainability rating | A |
+| Coverage | N/A (no unit tests; binary mod) |
+| Packaging check | pass ([`manifest-pull.txt`](docs/evidence/manifest-pull.txt)) |
 
-Now the mod should work the next time you launch the game.  
-> [!NOTE]  
-> This option assumes you're not using any other mods.  
-> If you're using other mods, use `HD2ModManager` or manage them manually.
+![SonarQube dashboard](docs/evidence/sonar-dashboard.png)
+
+Gate evidenced by the dashboard above, [`sonar-report.txt`](docs/evidence/sonar-report.txt),
+the scrubbed scanner log [`sonar-scan-log.txt`](docs/evidence/sonar-scan-log.txt),
+and the [`sonar-issues.png`](docs/evidence/sonar-issues.png) /
+[`sonar-measures.png`](docs/evidence/sonar-measures.png) screenshots.
+
+## Status
+
+| Area | State |
+|---|---|
+| Super Credit arrows | works (upstream feature) |
+| Appearance options | blue/purple x glow/no-glow |
+| Sample arrows | planned (see [`docs/ROADMAP.md`](docs/ROADMAP.md)) |
+| SonarQube gate | passing |
+
+## How it works
+
+The mod replaces the Super Credit `unit` with a copy that has an arrow mesh and
+bob animation baked in, injected through the `packages/boot` package (patch file
+`9ba626afa44a3aa3`). Each appearance variant lives in its own folder
+(`blue/glow`, `blue/no_glow`, `purple/glow`, `purple/no_glow`).
+
+### Install
+
+Use [HD2ModManager](https://www.nexusmods.com/helldivers2/mods/109?tab=files):
+`Add` the mod archive, enable it, optionally `EDIT` the appearance, then
+`Deploy`.
+
+Manual / scripted:
+
+```bash
+scripts/install.sh purple/glow /path/to/Helldivers\ 2   # or set HD2_GAME_PATH
+```
+
+### Revert
+
+```bash
+scripts/revert-mods.sh /path/to/Helldivers\ 2           # removes only this mod's patches
+```
+
+Back up the data dir first: `cp -a "$GAME/data" "$GAME/data.bak"`.
+
+## Validation Reports
+
+### Tested environments
+
+| Environment | Result |
+|---|---|
+| SonarQube Community (self-hosted, container scanner via podman) | gate OK |
+| Manifest/packaging vs HD2ModManager ingest model | pass |
+
+### Checklist
+
+- [x] `manifest.json` deserializes as a Version 1 manifest
+- [x] all patch files match the manager's deploy pattern
+- [x] SonarQube scan runs and the quality gate passes
+- [ ] in-game arrow render confirmed on the current build (manual)
+- [ ] Sample arrows implemented (roadmap)
+
+### Report log
+
+- 2026-06-19 — Baseline applied to the fork. SonarQube scan: gate OK, 0 bugs /
+  0 vulnerabilities / 0 hotspots / 0 code smells, ratings A/A/A. Packaging
+  validated against the mod manager's model. Evidence in `docs/evidence/`.
+
+## Validation and DevSecOps
+
+The pipeline is local shell scripts; there is no CI service. See
+[`docs/TESTING.md`](docs/TESTING.md) for how this mod is tested.
+
+- **Test** — packaging and install/revert checks (`docs/TESTING.md`).
+- **Scan** — `scripts/sonar.sh` (scan + quality gate),
+  `scripts/sonar-evidence.sh` (UI screenshots). Server URL and token come from
+  the local credential store (KWallet) at run time.
+- **Deploy / revert** — `scripts/install.sh` installs a variant;
+  `scripts/revert-mods.sh` removes only this mod's patches.
+
+## Security
+
+- No bugs, vulnerabilities, or security hotspots reported by SonarQube
+  (`docs/evidence/sonar-report.txt`).
+- No secrets, server URLs, or machine paths in the repo; the scan scripts read
+  the SonarQube URL and token from KWallet at run time.
+
+## Relationship to upstream
+
+Fork of [Giovani1906/hd2-sc-arrow](https://github.com/Giovani1906/hd2-sc-arrow).
+The mod content (manifest, patches, thumbnail) is upstream's. This fork adds the
+DevSecOps baseline, scripts, docs, and evidence. License follows upstream.

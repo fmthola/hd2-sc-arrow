@@ -1,0 +1,18 @@
+SonarQube analysis report
+========================================
+server         : self-hosted SonarQube Community (URL from KWallet, redacted)
+project key    : hd2-sc-arrow
+quality gate   : OK
+
+bugs                 : 0
+vulnerabilities      : 0
+security hotspots    : 0
+code smells          : 0
+reliability rating   : A
+security rating      : A
+maintainability      : A
+coverage             : N/A (no unit tests; binary mod)
+duplicated lines %   : 0.0
+lines of code (ncloc): 58
+
+failing gate conditions: none
