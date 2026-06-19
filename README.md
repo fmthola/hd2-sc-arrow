@@ -44,10 +44,16 @@ and the [`sonar-issues.png`](docs/evidence/sonar-issues.png) /
 | Area | State |
 |---|---|
 | Blue = Super Credit arrows | works (upstream patches); glow / no-glow |
-| Purple = Sample arrows | arrow grafted onto all 18 sample units; structurally validated |
+| Purple = Sample arrows | built + structurally validated; **NOT yet tested in-game** |
 | Target menu (blue/purple) | works in HD2ModManager EDIT |
-| Sample patches | built via Blender HD2 SDK; in-game render to be confirmed |
+| Sample patches | grafted onto all 18 sample units; **in-game render not confirmed** |
 | SonarQube gate | passing |
+
+> **Note:** the Sample (purple) arrows have **not been validated in-game yet** —
+> only structurally (the patch re-reads with the arrow on each unit, and it is
+> manager-ingestible). No release is published for the Sample arrows until the
+> in-game render is confirmed. The Blue Super Credit arrows are the validated,
+> upstream feature.
 
 ## How it works
 
