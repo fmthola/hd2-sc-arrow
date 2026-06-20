@@ -1,18 +1,19 @@
-# Super Credit Arrows (hd2-sc-arrow)
+# Super Credit & Rare Sample Arrows (hd2-sc-arrow)
 
 ![Thumbnail](thumbnail.png)
 
-Helldivers 2 mod that puts arrows above Super Credit piles, with a target menu:
-**blue arrows = Super Credits, purple arrows = Samples**.
+Helldivers 2 mod that marks pickups with tall glowing arrows:
+**blue arrows on Super Credits, purple arrows on Rare Samples** — pick one, or Both.
+
+![In-game: blue arrows mark Super Credits, purple arrows mark Rare Samples](docs/in-game.png)
 
 Fork of [Giovani1906/hd2-sc-arrow](https://github.com/Giovani1906/hd2-sc-arrow).
-This fork adds a local DevSecOps baseline (SonarQube scan, evidence,
-install/revert scripts) and a blue/purple target menu. The blue Super Credit
-arrows are the upstream patches, unchanged. The purple Sample arrows are now
-functional: the arrow is grafted onto all 18 sample units (built with the
-Blender HD2 SDK). The arrow uses each sample's own material, so it glows in the
-sample's colour. Validated structurally (patch round-trips, manager-ingestible);
-confirm the render in-game. See [`docs/ROADMAP.md`](docs/ROADMAP.md).
+The blue Super Credit arrows are upstream's, unchanged. This fork adds **purple
+arrows on the Rare Samples** (E-710 Crystal, Black Saffron, Legendarium) — built
+with the Blender HD2 SDK by grafting the arrow onto each rare-sample unit and
+giving it its own material so it runs alongside the blue credit arrows. Confirmed
+in-game (see above). Also adds a local DevSecOps baseline (SonarQube scan +
+evidence) and install/revert scripts.
 
 ## Code status
 
@@ -44,16 +45,10 @@ and the [`sonar-issues.png`](docs/evidence/sonar-issues.png) /
 | Area | State |
 |---|---|
 | Blue = Super Credit arrows | works (upstream patches); glow / no-glow |
-| Purple = Sample arrows | built + structurally validated; **NOT yet tested in-game** |
-| Target menu (blue/purple) | works in HD2ModManager EDIT |
-| Sample patches | grafted onto all 18 sample units; **in-game render not confirmed** |
+| Purple = Rare Sample arrows | works — confirmed in-game (E-710 Crystal, Black Saffron, Legendarium) |
+| Target menu | Blue / Purple / Both, in HD2ModManager EDIT |
+| Coexistence | purple uses its own material, so it runs alongside the blue credit arrows |
 | SonarQube gate | passing |
-
-> **Note:** the Sample (purple) arrows have **not been validated in-game yet** —
-> only structurally (the patch re-reads with the arrow on each unit, and it is
-> manager-ingestible). No release is published for the Sample arrows until the
-> in-game render is confirmed. The Blue Super Credit arrows are the validated,
-> upstream feature.
 
 ## How it works
 
@@ -88,6 +83,7 @@ Back up the data dir first: `cp -a "$GAME/data" "$GAME/data.bak"`.
 
 | Environment | Result |
 |---|---|
+| In-game (Helldivers 2, current build) | blue Credit + purple Rare Sample arrows render (see screenshot) |
 | SonarQube Community (self-hosted, container scanner via podman) | gate OK |
 | Manifest/packaging vs HD2ModManager ingest model | pass |
 
@@ -96,16 +92,15 @@ Back up the data dir first: `cp -a "$GAME/data" "$GAME/data.bak"`.
 - [x] `manifest.json` deserializes as a Version 1 manifest
 - [x] all patch files match the manager's deploy pattern
 - [x] SonarQube scan runs and the quality gate passes
-- [x] Sample arrows built and grafted onto all 18 sample units (structurally validated)
-- [ ] in-game arrow render confirmed on the current build (manual)
+- [x] Rare Sample arrows built and grafted (E-710 Crystal, Black Saffron, Legendarium)
+- [x] in-game arrow render confirmed — blue Credits + purple Rare Samples together
 
 ### Report log
 
-- 2026-06-19 — v2.1: built the Sample arrow patches. The arrow cone from the
-  Super Credit unit is grafted onto all 18 sample units (static + skinned) via
-  the Blender HD2 SDK, in one `9ba626afa44a3aa3` patch. Validated structurally
-  (re-reads with the arrow on every unit; manager-ingestible). In-game render
-  not yet confirmed. Arrow colour follows each sample's material.
+- 2026-06-19 — v2.1: Rare Sample arrows. The arrow cone from the Super Credit
+  unit is grafted onto the rare-sample units via the Blender HD2 SDK and given
+  its own material (`0xc7436f5fa783f938`) so it runs alongside the blue credit
+  arrows. **Confirmed in-game** (screenshot above). SonarQube gate OK.
 
 - 2026-06-19 — v2: added the blue/purple target menu (blue = Super Credits,
   functional; purple = Samples, preview). Packaging re-validated; SonarQube gate OK.

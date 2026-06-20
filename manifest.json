@@ -1,40 +1,41 @@
 {
     "Version": 1,
-    "Guid": "88d1225a-b661-406e-81ee-d6b200704b40",
-    "Name": "Super Credit & Sample Arrows",
-    "Description": "Blue arrows mark Super Credits. Purple arrows mark Samples (all 18 sample types).",
+    "Guid": "920b1969-9ec4-4498-a09a-7e24e98a0c59",
+    "Name": "Super Credit & Rare Sample Arrows",
+    "Description": "Blue arrows mark Super Credits, purple arrows mark Rare Samples. Pick one, or Both.",
     "IconPath": "thumbnail.png",
     "Options": [
         {
             "Name": "Arrow",
-            "Description": "Blue = Super Credits. Purple = Samples (preview, no patches yet).",
+            "Description": "Blue = Super Credits, Purple = Rare Samples. Choose one or Both.",
             "SubOptions": [
                 {
                     "Name": "Blue - Super Credits (glowing)",
-                    "Description": "Blue arrows over Super Credits, glowing.",
+                    "Description": "Blue arrows over Super Credits.",
                     "Include": [
                         "blue/glow"
                     ]
                 },
                 {
                     "Name": "Blue - Super Credits (no glow)",
-                    "Description": "Blue arrows over Super Credits, not glowing.",
+                    "Description": "Blue arrows over Super Credits, no glow.",
                     "Include": [
                         "blue/no_glow"
                     ]
                 },
                 {
-                    "Name": "Purple - Samples (glowing)",
-                    "Description": "Arrows over all Samples (common/rare/super), glowing.",
+                    "Name": "Purple - Rare Samples",
+                    "Description": "Purple arrows over Rare Samples (E-710 Crystal, Black Saffron, Legendarium).",
                     "Include": [
                         "purple/glow"
                     ]
                 },
                 {
-                    "Name": "Purple - Samples (no glow)",
-                    "Description": "Arrows over all Samples (common/rare/super), not glowing.",
+                    "Name": "Both - Credits + Rare Samples",
+                    "Description": "Blue on Super Credits AND purple on Rare Samples.",
                     "Include": [
-                        "purple/no_glow"
+                        "blue/glow",
+                        "purple/glow"
                     ]
                 }
             ]
